@@ -23,8 +23,17 @@ router
 		burger.insert(order.burgerOrder,(result)=>{
 			res.json({ id: result.insertId });
 		});
+	})
+	.put('/order/devour/:id',(req,res)=>{
+		var id = req.params.id;
+		burger.update(id,(result)=>{
+			if (result.changedRows == 0) {
+				return res.status(404).end();
+			} else {
+				res.status(200).end();
+			}
+		});
 	});
-	//.put()
 	//.delete();
 
 

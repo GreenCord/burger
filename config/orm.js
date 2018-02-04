@@ -6,7 +6,7 @@ var orm = {
 
 	selectAll: function(callback){
 		console.log('Selecting All');
-		var query = 'SELECT * FROM burgers;';
+		var query = 'SELECT * FROM burgers ORDER BY id DESC;';
 		connection.query(query,(err,result)=>{
 			if (err) throw err;
 			callback(result);
@@ -21,7 +21,12 @@ var orm = {
 		});
 	},
 	updateOne: function(vals, callback){
-		callback(console.log('Updating One',vals));
+		console.log('Updating One',vals);
+		var query = 'UPDATE burgers SET devoured = 1 WHERE id = ?';
+		connection.query(query,vals,(err,result)=>{
+			if (err) throw err;
+			callback(result);
+		});
 	}
 
 };
