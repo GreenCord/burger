@@ -7,4 +7,21 @@ $(document).ready(function(){
 
   });
 
+  $('#burgerSubmit').click(function(e){
+  	e.preventDefault();
+  	
+  	var order = {
+  		burgerOrder: $('#burgerOrder').val().trim()	
+  	};
+
+  	$.ajax('/order/new',{
+  		type: 'POST',
+  		data: order
+  	}).then(
+  		function(){
+	  		console.log('Order placed!');
+	  		location.reload();
+  	});
+  });
+
 });

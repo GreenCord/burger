@@ -17,8 +17,13 @@ router
 			console.log(hbsObject);
 			res.render('index', hbsObject);
 		});
+	})
+	.post('/order/new',(req,res)=>{
+		var order = req.body;
+		burger.insert(order.burgerOrder,(result)=>{
+			res.json({ id: result.insertId });
+		});
 	});
-	//.post()
 	//.put()
 	//.delete();
 

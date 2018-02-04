@@ -13,7 +13,12 @@ var orm = {
 		});
 	},
 	insertOne: function(vals, callback){
-		callback(console.log('Inserting One',vals));
+		console.log('Inserting One',vals);
+		var query = 'INSERT INTO burgers (burger_name) VALUES (?)';
+		connection.query(query,vals,(err,result)=>{
+			if (err) throw err;
+			callback(result);
+		});
 	},
 	updateOne: function(vals, callback){
 		callback(console.log('Updating One',vals));
