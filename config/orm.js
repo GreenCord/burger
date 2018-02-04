@@ -5,7 +5,7 @@ var connection = require('../config/connection.js');
 var orm = {
 
 	selectAll: function(callback){
-		callback(console.log('Selecting All from ' + from));
+		callback(console.log('Selecting All'));
 	},
 	insertOne: function(vals, callback){
 		callback(console.log('Inserting One',vals));
@@ -13,7 +13,7 @@ var orm = {
 	updateOne: function(vals, callback){
 		callback(console.log('Updating One',vals));
 	}
-	
+
 };
 
 // Export

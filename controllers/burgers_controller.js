@@ -9,7 +9,14 @@ var burger = require('../models/burgers.js');
 // Routes
 router
 	.get('/',(req,res)=>{
-		res.sendFile(path.join(__dirname, "../public/test.html"));
+		// res.sendFile(path.join(__dirname, "../public/test.html"));
+		burger.all(function(data){
+			var hbsObject = {
+				burgers: data
+			};
+			console.log(hbsObject);
+			res.render('index', hbsObject);
+		});
 	});
 	//.post()
 	//.put()
