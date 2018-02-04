@@ -5,7 +5,12 @@ var connection = require('../config/connection.js');
 var orm = {
 
 	selectAll: function(callback){
-		callback(console.log('Selecting All'));
+		console.log('Selecting All');
+		var query = 'SELECT * FROM burgers;';
+		connection.query(query,(err,result)=>{
+			if (err) throw err;
+			callback(result);
+		});
 	},
 	insertOne: function(vals, callback){
 		callback(console.log('Inserting One',vals));
